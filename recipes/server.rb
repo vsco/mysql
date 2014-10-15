@@ -97,9 +97,8 @@ unless platform_family?(%w{mac_os_x})
   [File.dirname(node['mysql']['pid_file']),
     File.dirname(node['mysql']['tunable']['slow_query_log']),
     node['mysql']['confd_dir'],
-    node['mysql']['confd_dir'],
     node['mysql']['log_dir'],
-    node['mysql']['data_dir']].each do |directory_path|
+    node['mysql']['data_dir']].sort.uniq.each do |directory_path|
     directory directory_path do
       owner "mysql" unless platform? 'windows'
       group "mysql" unless platform? 'windows'
