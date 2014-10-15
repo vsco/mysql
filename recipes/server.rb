@@ -207,8 +207,4 @@ unless platform_family?(%w{mac_os_x})
     end
     variables :skip_federated => skip_federated
   end
-
-  service "mysql" do
-    action :start
-  end
 end
