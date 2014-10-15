@@ -175,7 +175,6 @@ unless platform_family?(%w{mac_os_x})
   begin
     t = resources("template[#{grants_path}]")
   rescue
-    Chef::Log.info("Could not find previously defined grants.sql resource")
     t = template grants_path do
       source "grants.sql.erb"
       owner "root" unless platform_family? 'windows'
