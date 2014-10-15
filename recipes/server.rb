@@ -44,12 +44,7 @@ end
 
 if platform_family?(%w{debian})
 
-  directory "/var/cache/local/preseeding" do
-    owner "root"
-    group node['mysql']['root_group']
-    mode 0755
-    recursive true
-  end
+  include_recipe "apt"
 
   execute "preseed mysql-server" do
     command "debconf-set-selections /var/cache/local/preseeding/mysql-server.seed"
